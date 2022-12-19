@@ -37,6 +37,27 @@ The project will be executed with the following command:
 npm install && npm test
 ```
 
+When configuring the project, make sure that the **test-results.xml** file in JUnit format is returned as the output of the test execution.
+
+In this case, **karma-junit-reporter** is added to **package.json** and used in **karma.conf.js**.
+
+```json
+"devDependencies": {
+	"karma-junit-reporter": "^2.0.1"
+}
+```
+```js
+plugins: [
+	require('karma-junit-reporter'),
+],
+reporters: ['progress', 'junit'],
+junitReporter: {
+	outputDir: './',
+	outputFile: 'test-results.xml',
+	useBrowserName: false
+}
+```
+
 **When compressing the project contents into a ZIP archive please skip
 `./node_modules` directories.**
 
